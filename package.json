@@ -1,0 +1,24 @@
+{
+  "name": "cody-bot",
+  "version": "0.1.0",
+  "description": "基于 Claude Code 和飞书的本地个人助手",
+  "module": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --watch src/index.ts",
+    "start": "bun run src/index.ts",
+    "mcp:feishu": "bun run mcp-servers/feishu/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-code": "^2.1.59",
+    "@larksuiteoapi/node-sdk": "^1.59.0",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "croner": "^10.0.1"
+  }
+}

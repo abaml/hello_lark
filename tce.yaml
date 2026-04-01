@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cody-bot
+  namespace: default
+  labels:
+    app: cody-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cody-bot
+  template:
+    metadata:
+      labels:
+        app: cody-bot
+    spec:
+      containers:
+      - name: cody-bot
+        image: cody-bot:latest
+        env:
+        - name: FEISHU_APP_ID
+          value: "${FEISHU_APP_ID}"
+        - name: FEISHU_APP_SECRET
+          value: "${FEISHU_APP_SECRET}"
+        - name: LOG_LEVEL
+          value: "info"
+        - name: DB_PATH
+          value: "./data/cody-bot.db"
+        volumeMounts:
+        - name: data
+          mountPath: /app/data
+      volumes:
+      - name: data
+        emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cody-bot
+  namespace: default
+spec:
+  selector:
+    app: cody-bot
+  ports:
+  - port: 8080
+    targetPort: 8080

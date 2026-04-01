@@ -1,0 +1,14 @@
+{
+  "name": "feishu-mcp-server",
+  "version": "0.1.0",
+  "description": "MCP Server for Feishu/Lark operations",
+  "type": "module",
+  "main": "index.ts",
+  "scripts": {
+    "start": "bun run index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "@larksuiteoapi/node-sdk": "^1.59.0"
+  }
+}
